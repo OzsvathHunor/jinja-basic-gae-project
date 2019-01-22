@@ -2,6 +2,7 @@
 import os
 import jinja2
 import webapp2
+import datetime
 
 
 template_dir = os.path.join(os.path.dirname(__file__), "templates")
@@ -30,11 +31,13 @@ class BaseHandler(webapp2.RequestHandler):
 class MainHandler(BaseHandler):
     def get(self):
         #http://127.0.0.1:8080/?age=20
-        age_str = self.request.get("age")
-        if age_str == "":
+        birthyear_str = self.request.get("birthyear")
+        if birthyear_str == "":
             return self.render_template("askforage.html")
         else:
-            age = int(age_str)
+            birthyear = int(birthyear_str)
+            year = datetime.date.today().year
+            age = year - birthyear
             drinks = {"wine", "beer", "whiskey"}
             params = {"age": age, "drinks": drinks}
             return self.render_template("hello.html", params)
