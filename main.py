@@ -30,17 +30,16 @@ class BaseHandler(webapp2.RequestHandler):
 
 class MainHandler(BaseHandler):
     def get(self):
-        #http://127.0.0.1:8080/?age=20
+        return self.render_template("askforage.html")
+
+    def post(self):
         birthyear_str = self.request.get("birthyear")
-        if birthyear_str == "":
-            return self.render_template("askforage.html")
-        else:
-            birthyear = int(birthyear_str)
-            year = datetime.date.today().year
-            age = year - birthyear
-            drinks = {"wine", "beer", "whiskey"}
-            params = {"age": age, "drinks": drinks}
-            return self.render_template("hello.html", params)
+        birthyear = int(birthyear_str)
+        year = datetime.date.today().year
+        age = year - birthyear
+        drinks = {"wine", "beer", "whiskey"}
+        params = {"age": age, "drinks": drinks}
+        return self.render_template("hello.html", params)
 
 
 class BlogHandler(BaseHandler):
