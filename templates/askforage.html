@@ -1,17 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Ask for age</title>
+{% extends "base.html" %}
 
-    <link rel="stylesheet" href="/assets/css/style.css">
-</head>
-<body>
+{% block page_content %}
 
 <form action="" method="post">
-    Birth year:
-    <input name="birthyear" type="number">
+    Mi a fővárosa {{ country }}nak?
+    <input name="country" type="hidden" value="{{ country }}">
+    <input name="guess" type="text" >
     <input type="submit" value="Ok">
 </form>
-</body>
-</html>
+
+{% endblock page_content %}

@@ -1,23 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title>SmartNinja basic Jinja template</title>
+{% extends "base.html" %}
 
-    <link rel="stylesheet" href="/assets/css/style.css">
-</head>
-<body>
-    <h1>Hello, SmartNinja!</h1>
+{% block page_content %}
 
-{% if age < 18 %}
-    <p>Too young.</p>
+{% if success %}
+    <p>Jól tippeltél.</p>
 {% else %}
-    <p>Right age.</p>
-    <ul>
-    {% for drink in drinks %}
-        <li>{{drink}}</li>
-    {% endfor %}
-    </ul>
+    <p>Sajnos most nem sikerült.</p>
 {% endif %}
-</body>
-</html>
+
+<a href="">Újrapróbálom</a>
+
+{% endblock page_content %}
